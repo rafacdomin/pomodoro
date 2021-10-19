@@ -58,18 +58,23 @@ const Counter = styled.button`
   box-shadow: -4rem -4rem 4rem rgba(217, 225, 251, 0.05),
     4rem 4rem 4rem rgba(21, 25, 50, 0.8);
 
-  background: var(--darker);
+  position: relative;
+  background: linear-gradient(
+    130deg,
+    rgba(21, 25, 50, 1) 40%,
+    rgba(217, 225, 251, 0.2)
+  );
+  padding: 3rem;
   border: none;
   border-radius: 50%;
-  padding: 3rem;
   color: var(--light);
   transition: transform 0.2s;
 
   div {
     width: 40rem;
     height: 40rem;
+    background: var(--darker);
     border-radius: 50%;
-    border: 1rem solid var(--red);
     display: flex;
     flex-direction: column;
     align-items: center;
