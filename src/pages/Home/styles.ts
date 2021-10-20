@@ -64,15 +64,15 @@ const Counter = styled.button`
     rgba(21, 25, 50, 1) 40%,
     rgba(217, 225, 251, 0.2)
   );
-  padding: 3rem;
+  padding: 2.4rem;
   border: none;
   border-radius: 50%;
   color: var(--light);
   transition: transform 0.2s;
 
-  div {
-    width: 40rem;
-    height: 40rem;
+  > div {
+    width: 42rem;
+    height: 42rem;
     background: var(--darker);
     border-radius: 50%;
     display: flex;
@@ -80,9 +80,22 @@ const Counter = styled.button`
     align-items: center;
     justify-content: center;
 
+    .CircularProgressbar {
+      width: 40rem;
+      height: 40rem;
+    }
+
+    .CircularProgressbar-path {
+      stroke: var(--red);
+    }
+
+    .CircularProgressbar-trail {
+      stroke: var(--darker);
+    }
+
     h1 {
       display: inline-block;
-      font-size: 12rem;
+      font-size: 11rem;
     }
 
     span {

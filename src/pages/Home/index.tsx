@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { IoMdSettings } from 'react-icons/io';
 import { Header, Main, Counter } from './styles';
+import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 interface IConfig {
   pomodoro: number;
@@ -65,6 +67,18 @@ export const Home: React.FC = () => {
     }`;
   }, [pomodoro]);
 
+  const percentage = useMemo(() => {
+    return (pomodoro / (25 * 60)) * 100;
+  }, [pomodoro]);
+
+  const playOrPause = useMemo(() => {
+    if (!!timer) {
+      return 'PAUSE';
+    }
+
+    return 'PLAY';
+  }, [timer]);
+
   return (
     <>
       <Header>
@@ -78,8 +92,10 @@ export const Home: React.FC = () => {
       <Main>
         <Counter onClick={!timer ? startTimer : pauseTimer}>
           <div>
-            <h1>{convertSeconds}</h1>
-            <span>PAUSE</span>
+            <CircularProgressbarWithChildren value={percentage} strokeWidth={2}>
+              <h1>{convertSeconds}</h1>
+              <span>{playOrPause}</span>
+            </CircularProgressbarWithChildren>
           </div>
         </Counter>
         <footer>
