@@ -1,15 +1,21 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { IoMdSettings } from 'react-icons/io';
 import { Header, Main } from './styles';
-import 'react-circular-progressbar/dist/styles.css';
 
 import { Timer } from '../../components/Timer';
+import { Modal } from '../../components/Modal';
 
 export const Home: React.FC = () => {
   const [type, setType] = useState<'pomodoro' | 'short' | 'long'>('pomodoro');
+  const [showModal, setShowModal] = useState(false);
+
+  const controlModal = useCallback(() => {
+    setShowModal((state) => !state);
+  }, []);
 
   return (
     <>
+      <Modal isOpen={showModal} controlModal={controlModal} />
       <Header>
         <h1>pomodoro</h1>
         <nav>
@@ -36,7 +42,7 @@ export const Home: React.FC = () => {
       <Main>
         <Timer type={type} />
         <footer>
-          <button>
+          <button onClick={controlModal}>
             <IoMdSettings />
           </button>
         </footer>

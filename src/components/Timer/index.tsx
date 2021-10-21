@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useConfig } from '../../hooks/config';
 
 import { Counter } from './styles';
 
@@ -9,16 +10,17 @@ interface ITimerProps {
 }
 
 export const Timer: React.FC<ITimerProps> = ({ type }) => {
+  const localConfig = useConfig();
   const [timer, setTimer] = useState<NodeJS.Timeout | number>();
-  const [counter, setCounter] = useState(25 * 60);
+  const [counter, setCounter] = useState(localConfig.pomodoro * 60);
 
   const config = useMemo(() => {
     return {
-      pomodoro: 25 * 60,
-      short: 5 * 60,
-      long: 15 * 60,
+      pomodoro: localConfig.pomodoro * 60,
+      short: localConfig.short * 60,
+      long: localConfig.long * 60,
     };
-  }, []);
+  }, [localConfig]);
 
   const startTimer = useCallback(() => {
     if (!timer) {
