@@ -13,17 +13,32 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
   const config = useConfig();
 
   const closeModal = useCallback(
-    (e) => {
-      if (modalRef.current === e.target) {
+    (event) => {
+      if (modalRef.current === event.target) {
         controlModal();
       }
     },
     [controlModal]
   );
 
+  const handleSubmit = useCallback((event) => {
+    event.preventDefault();
+    const { pomodoro, long, short } = event.target.elements;
+
+    config.saveConfig({
+      pomodoro: pomodoro.value,
+      long: long.value,
+      short: short.value,
+      font: 'Poppins',
+      color: 'red',
+    });
+
+    controlModal();
+  }, [config, controlModal]);
+
   return isOpen ? (
     <Wrapper ref={modalRef} onClick={closeModal}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <header>
           <h1>Settings</h1>
           <FiX onClick={controlModal} aria-label="Close" />

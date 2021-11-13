@@ -6,13 +6,21 @@ import {
   useState,
 } from 'react';
 
+interface ISaveConfigInput {
+  pomodoro: number;
+  short: number;
+  long: number;
+  font: string;
+  color: string;
+}
+
 interface IConfigContext {
   pomodoro: number;
   long: number;
   short: number;
   font: string;
   color: string;
-  saveConfig(): void;
+  saveConfig(data: ISaveConfigInput): void;
 }
 
 const ConfigContext = createContext<IConfigContext>({} as IConfigContext);
@@ -38,17 +46,23 @@ const ConfigProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  const saveConfig = useCallback(() => {
+  const saveConfig = useCallback((data: IConfigContext) => {
     const config = {
-      pomodoro,
-      short,
-      long,
-      font,
-      color,
+      pomodoro: data.pomodoro,
+      short: data.short,
+      long: data.long,
+      font: data.font,
+      color: data.color,
     };
 
+    setPomodoro(config.pomodoro);
+    setShort(config.short);
+    setLong(config.long);
+    setFont(config.font);
+    setColor(config.color);
+
     localStorage.setItem('config', JSON.stringify(config));
-  }, [pomodoro, short, long, font, color]);
+  }, []);
 
   useEffect(() => {
     loadConfig();
