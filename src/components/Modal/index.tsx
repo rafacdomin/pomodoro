@@ -1,4 +1,4 @@
-import { Form, Wrapper, Input } from './styles';
+import { Form, Wrapper, Input, Fonts, Colors } from './styles';
 import { FiX } from 'react-icons/fi';
 import { useCallback, useRef } from 'react';
 import { useConfig } from '../../hooks/config';
@@ -21,20 +21,23 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
     [controlModal]
   );
 
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault();
-    const { pomodoro, long, short } = event.target.elements;
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      const { pomodoro, long, short } = event.target.elements;
 
-    config.saveConfig({
-      pomodoro: pomodoro.value,
-      long: long.value,
-      short: short.value,
-      font: 'Poppins',
-      color: 'red',
-    });
+      config.saveConfig({
+        pomodoro: pomodoro.value,
+        long: long.value,
+        short: short.value,
+        font: 'Poppins',
+        color: 'red',
+      });
 
-    controlModal();
-  }, [config, controlModal]);
+      controlModal();
+    },
+    [config, controlModal]
+  );
 
   return isOpen ? (
     <Wrapper ref={modalRef} onClick={closeModal}>
@@ -43,7 +46,7 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
           <h1>Settings</h1>
           <FiX onClick={controlModal} aria-label="Close" />
         </header>
-        <section>
+        <section className="time">
           <h2>Time (Minutes)</h2>
 
           <div>
@@ -85,11 +88,23 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
             </div>
           </div>
         </section>
-        <section>
+        <section className="font">
           <h2>Font</h2>
+
+          <Fonts>
+            <input type="radio" name="font" id="Poppins" value="Poppins" />
+            <input type="radio" name="font" id="Arial" value="Arial" />
+            <input type="radio" name="font" id="serif" value="serif" />
+          </Fonts>
         </section>
-        <section>
+        <section className="color">
           <h2>Color</h2>
+
+          <Colors>
+            <input type="radio" name="color" id="red" value="red" />
+            <input type="radio" name="color" id="blue" value="blue" />
+            <input type="radio" name="color" id="lavender" value="lavender" />
+          </Colors>
         </section>
         <button type="submit">Apply</button>
       </Form>

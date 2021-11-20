@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import checkSVG from './check-bold.svg';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -55,14 +56,28 @@ const Form = styled.form`
       border-top: 0.2rem solid rgba(0, 0, 0, 0.15);
     }
 
-    > div {
-      margin-top: 2rem;
+    &.time {
+      > div {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+
+        label {
+          color: var(--grey);
+          font-weight: bold;
+        }
+      }
+    }
+
+    &.font,
+    &.color {
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
-      label {
-        color: var(--grey);
-        font-weight: bold;
+      > div {
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
@@ -120,4 +135,80 @@ const Input = styled.div`
   }
 `;
 
-export { Wrapper, Form, Input };
+const Fonts = styled.div`
+  width: 250px;
+
+  input[type='radio'] {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    appearance: none;
+    background-color: var(--light);
+    color: var(--dark);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: 'Aa';
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    &#Arial::after {
+      font-family: sans-serif;
+    }
+
+    &#Poppins::after {
+      font-family: 'Poppins';
+    }
+
+    &#serif::after {
+      font-family: serif;
+    }
+
+    &:checked {
+      background-color: var(--darker);
+      color: var(--light);
+    }
+  }
+`;
+
+const Colors = styled.div`
+  width: 250px;
+
+  input[type='radio'] {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    appearance: none;
+    border-radius: 50%;
+
+    &#red {
+      background-color: var(--red);
+    }
+
+    &#blue {
+      background-color: var(--blue);
+    }
+
+    &#lavender {
+      background-color: var(--lavender);
+    }
+
+    &:checked {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::after {
+        margin-top: 0.5rem;
+        content: url(${checkSVG});
+      }
+    }
+  }
+`;
+
+export { Wrapper, Form, Input, Fonts, Colors };
