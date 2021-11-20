@@ -81,22 +81,22 @@ const Form = styled.form`
       }
     }
   }
+`;
 
-  button {
-    align-self: center;
-    width: 20rem;
-    margin-bottom: -1.5rem;
-    border: none;
-    background: var(--red);
-    padding: 1rem;
-    border-radius: 4rem;
-    color: var(--white);
-    font-weight: 700;
-    transition: filter 0.2s;
+const FormButton = styled.button`
+  align-self: center;
+  width: 20rem;
+  margin-bottom: -1.5rem;
+  border: none;
+  background: var(--${(props) => props.color});
+  padding: 1rem;
+  border-radius: 4rem;
+  color: var(--white);
+  font-weight: 700;
+  transition: filter 0.2s;
 
-    &:hover {
-      filter: brightness(1.1);
-    }
+  &:hover {
+    filter: brightness(1.1);
   }
 `;
 
@@ -158,7 +158,7 @@ const Fonts = styled.div`
     }
 
     &#Arial::after {
-      font-family: sans-serif;
+      font-family: Arial;
     }
 
     &#Poppins::after {
@@ -206,9 +206,10 @@ const Colors = styled.div`
       &::after {
         margin-top: 0.5rem;
         content: url(${checkSVG});
+        opacity: 0.6;
       }
     }
   }
 `;
 
-export { Wrapper, Form, Input, Fonts, Colors };
+export { Wrapper, Form, FormButton, Input, Fonts, Colors };

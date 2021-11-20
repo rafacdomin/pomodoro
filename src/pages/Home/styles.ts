@@ -25,12 +25,12 @@ const Header = styled.header`
       transition: color 0.2s;
 
       &:hover {
-        color: var(--red);
+        color: var(--${(props) => props.color});
       }
     }
 
     .active {
-      background: var(--red);
+      background: var(--${(props) => props.color});
       color: var(--darker);
 
       &:hover {

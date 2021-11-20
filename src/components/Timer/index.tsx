@@ -74,7 +74,10 @@ export const Timer: React.FC<ITimerProps> = ({ type }) => {
   }, [timer]);
 
   return (
-    <Counter onClick={!timer ? startTimer : pauseTimer}>
+    <Counter
+      color={localConfig.color}
+      onClick={!timer ? startTimer : pauseTimer}
+    >
       <div>
         <CircularProgressbarWithChildren value={percentage} strokeWidth={2}>
           <h1>{convertSeconds}</h1>

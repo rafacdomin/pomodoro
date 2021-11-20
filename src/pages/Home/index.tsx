@@ -4,8 +4,10 @@ import { Header, Main } from './styles';
 
 import { Timer } from '../../components/Timer';
 import { Modal } from '../../components/Modal';
+import { useConfig } from '../../hooks/config';
 
 export const Home: React.FC = () => {
+  const localConfig = useConfig();
   const [type, setType] = useState<'pomodoro' | 'short' | 'long'>('pomodoro');
   const [showModal, setShowModal] = useState(false);
 
@@ -16,7 +18,7 @@ export const Home: React.FC = () => {
   return (
     <>
       <Modal isOpen={showModal} controlModal={controlModal} />
-      <Header>
+      <Header color={localConfig.color}>
         <h1>pomodoro</h1>
         <nav>
           <button

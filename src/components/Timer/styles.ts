@@ -32,7 +32,7 @@ const Counter = styled.button`
     }
 
     .CircularProgressbar-path {
-      stroke: var(--red);
+      stroke: var(--${(props) => props.color});
     }
 
     .CircularProgressbar-trail {
@@ -52,7 +52,7 @@ const Counter = styled.button`
 
     &:hover {
       span {
-        color: var(--red);
+        color: var(--${(props) => props.color});
       }
     }
   }
