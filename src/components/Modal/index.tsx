@@ -1,4 +1,4 @@
-import { Form, Wrapper, Input, Fonts, Colors } from './styles';
+import { Form, FormButton, Wrapper, Input, Fonts, Colors } from './styles';
 import { FiX } from 'react-icons/fi';
 import { useCallback, useRef } from 'react';
 import { useConfig } from '../../hooks/config';
@@ -24,14 +24,14 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      const { pomodoro, long, short } = event.target.elements;
+      const { pomodoro, long, short, font, color } = event.target.elements;
 
       config.saveConfig({
         pomodoro: pomodoro.value,
         long: long.value,
         short: short.value,
-        font: 'Poppins',
-        color: 'red',
+        font: font.value,
+        color: color.value,
       });
 
       controlModal();
@@ -92,21 +92,59 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
           <h2>Font</h2>
 
           <Fonts>
-            <input type="radio" name="font" id="Poppins" value="Poppins" />
-            <input type="radio" name="font" id="Arial" value="Arial" />
-            <input type="radio" name="font" id="serif" value="serif" />
+            <input
+              type="radio"
+              name="font"
+              id="Poppins"
+              value="Poppins"
+              defaultChecked={config.font === 'Poppins'}
+            />
+            <input
+              type="radio"
+              name="font"
+              id="Arial"
+              value="Arial"
+              defaultChecked={config.font === 'Arial'}
+            />
+            <input
+              type="radio"
+              name="font"
+              id="serif"
+              value="serif"
+              defaultChecked={config.font === 'serif'}
+            />
           </Fonts>
         </section>
         <section className="color">
           <h2>Color</h2>
 
           <Colors>
-            <input type="radio" name="color" id="red" value="red" />
-            <input type="radio" name="color" id="blue" value="blue" />
-            <input type="radio" name="color" id="lavender" value="lavender" />
+            <input
+              type="radio"
+              name="color"
+              id="red"
+              value="red"
+              defaultChecked={config.color === 'red'}
+            />
+            <input
+              type="radio"
+              name="color"
+              id="blue"
+              value="blue"
+              defaultChecked={config.color === 'blue'}
+            />
+            <input
+              type="radio"
+              name="color"
+              id="lavender"
+              value="lavender"
+              defaultChecked={config.color === 'lavender'}
+            />
           </Colors>
         </section>
-        <button type="submit">Apply</button>
+        <FormButton color={config.color} type="submit">
+          Apply
+        </FormButton>
       </Form>
     </Wrapper>
   ) : null;
