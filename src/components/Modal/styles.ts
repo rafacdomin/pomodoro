@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import checkSVG from './check-bold.svg';
 
-const Wrapper = styled.div`
+interface CustomProps {
+  font: string;
+}
+
+const Wrapper = styled.div<CustomProps>`
+  font-family: ${(props) => props.font};
   position: absolute;
   display: flex;
   align-items: center;

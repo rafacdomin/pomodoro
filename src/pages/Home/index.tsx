@@ -18,7 +18,7 @@ export const Home: React.FC = () => {
   return (
     <>
       <Modal isOpen={showModal} controlModal={controlModal} />
-      <Header color={localConfig.color}>
+      <Header color={localConfig.color} font={localConfig.font}>
         <h1>pomodoro</h1>
         <nav>
           <button

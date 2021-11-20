@@ -40,7 +40,7 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
   );
 
   return isOpen ? (
-    <Wrapper ref={modalRef} onClick={closeModal}>
+    <Wrapper ref={modalRef} onClick={closeModal} font={config.font}>
       <Form onSubmit={handleSubmit}>
         <header>
           <h1>Settings</h1>

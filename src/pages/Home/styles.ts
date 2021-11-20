@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-const Header = styled.header`
+interface CustomProps {
+  font: string;
+}
+
+const Header = styled.header<CustomProps>`
+  font-family: ${(props) => props.font};
   display: flex;
   flex-direction: column;
   align-items: center;

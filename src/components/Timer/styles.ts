@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-const Counter = styled.button`
+interface CustomProps {
+  font: string;
+}
+
+const Counter = styled.button<CustomProps>`
+  font-family: ${(props) => props.font};
   box-shadow: -4rem -4rem 4rem rgba(217, 225, 251, 0.05),
     4rem 4rem 4rem rgba(21, 25, 50, 0.8);
 

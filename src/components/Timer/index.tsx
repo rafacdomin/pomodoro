@@ -75,6 +75,7 @@ export const Timer: React.FC<ITimerProps> = ({ type }) => {
 
   return (
     <Counter
+      font={localConfig.font}
       color={localConfig.color}
       onClick={!timer ? startTimer : pauseTimer}
     >
