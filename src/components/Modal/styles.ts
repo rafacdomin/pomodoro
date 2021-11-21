@@ -18,6 +18,14 @@ const Wrapper = styled.div<CustomProps>`
   top: 0;
   left: 0;
   z-index: 10;
+
+  input {
+    font-family: ${(props) => props.font};
+  }
+
+  button {
+    font-family: ${(props) => props.font};
+  }
 `;
 
 const Form = styled.form`
