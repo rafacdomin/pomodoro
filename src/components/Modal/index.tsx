@@ -49,9 +49,13 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
         <section className="time">
           <h2>Time (Minutes)</h2>
 
-          <div>
-            <div>
+          <div className="input-wrapper">
+            <div className="labels">
               <label htmlFor="pomodoro">pomodoro</label>
+              <label htmlFor="short">short break</label>
+              <label htmlFor="long">long break</label>
+            </div>
+            <div className="inputs">
               <Input>
                 <input
                   defaultValue={config.pomodoro}
@@ -61,9 +65,6 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
                   max="90"
                 />
               </Input>
-            </div>
-            <div>
-              <label htmlFor="short">short break</label>
               <Input>
                 <input
                   defaultValue={config.short}
@@ -73,9 +74,6 @@ const Modal: React.FC<IModalProps> = ({ isOpen, controlModal }) => {
                   max="15"
                 />
               </Input>
-            </div>
-            <div>
-              <label htmlFor="long">long break</label>
               <Input>
                 <input
                   defaultValue={config.long}

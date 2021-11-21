@@ -15,15 +15,15 @@ const Counter = styled.button<CustomProps>`
     rgba(21, 25, 50, 1) 40%,
     rgba(217, 225, 251, 0.2)
   );
-  padding: 2.4rem;
+  padding: 1.2rem;
   border: none;
   border-radius: 50%;
   color: var(--light);
   transition: transform 0.2s;
 
   > div {
-    width: 42rem;
-    height: 42rem;
+    width: 21rem;
+    height: 21rem;
     background: var(--darker);
     border-radius: 50%;
     display: flex;
@@ -32,8 +32,8 @@ const Counter = styled.button<CustomProps>`
     justify-content: center;
 
     .CircularProgressbar {
-      width: 40rem;
-      height: 40rem;
+      width: 20rem;
+      height: 20rem;
     }
 
     .CircularProgressbar-path {
@@ -46,7 +46,7 @@ const Counter = styled.button<CustomProps>`
 
     h1 {
       display: inline-block;
-      font-size: 11rem;
+      font-size: 5rem;
     }
 
     span {
@@ -64,6 +64,24 @@ const Counter = styled.button<CustomProps>`
 
   &:active {
     transform: translate(0.2rem, 0.2rem);
+  }
+
+  @media (min-width: 768px) {
+    padding: 2.4rem;
+
+    > div {
+      width: 42rem;
+      height: 42rem;
+
+      .CircularProgressbar {
+        width: 40rem;
+        height: 40rem;
+      }
+
+      h1 {
+        font-size: 11rem;
+      }
+    }
   }
 `;
 
