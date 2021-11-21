@@ -22,6 +22,7 @@ const Header = styled.header<CustomProps>`
     border-radius: 8rem;
 
     button {
+      font-family: ${(props) => props.font};
       background: transparent;
       color: var(--light);
       border: none;
