@@ -15,15 +15,15 @@ const Counter = styled.button<CustomProps>`
     rgba(21, 25, 50, 1) 40%,
     rgba(217, 225, 251, 0.2)
   );
-  padding: 1.2rem;
+  padding: 3.2vw;
   border: none;
   border-radius: 50%;
   color: var(--light);
   transition: transform 0.2s;
 
   > div {
-    width: 21rem;
-    height: 21rem;
+    width: 60vw;
+    height: 60vw;
     background: var(--darker);
     border-radius: 50%;
     display: flex;
@@ -32,8 +32,8 @@ const Counter = styled.button<CustomProps>`
     justify-content: center;
 
     .CircularProgressbar {
-      width: 20rem;
-      height: 20rem;
+      width: 60vw;
+      height: 60vw;
     }
 
     .CircularProgressbar-path {
@@ -46,7 +46,7 @@ const Counter = styled.button<CustomProps>`
 
     h1 {
       display: inline-block;
-      font-size: 5rem;
+      font-size: 16vw;
     }
 
     span {

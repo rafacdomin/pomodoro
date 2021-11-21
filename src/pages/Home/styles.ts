@@ -34,6 +34,10 @@ const Header = styled.header<CustomProps>`
       &:hover {
         color: var(--${(props) => props.color});
       }
+
+      @media (min-width: 375px) {
+        padding: 1rem 6vw;
+      }
     }
 
     .active {
@@ -54,9 +58,11 @@ const Header = styled.header<CustomProps>`
       margin: 0 0 6rem 0;
     }
 
-    button {
-      padding: 1rem 2.4rem;
-      font-size: 1.6rem;
+    nav {
+      button {
+        padding: 1rem 2.4rem;
+        font-size: 1.6rem;
+      }
     }
   }
 `;
@@ -67,12 +73,12 @@ const Main = styled.main`
   align-items: center;
 
   footer {
-    margin: 6rem 0 0 0;
+    margin: 8vh 0 0 0;
 
     button {
       border: none;
       background: transparent;
-      font-size: 1.8rem;
+      font-size: 5.6vw;
       color: var(--light);
       opacity: 0.6;
       transition: opacity 0.2s;
@@ -83,8 +89,11 @@ const Main = styled.main`
     }
 
     @media (min-width: 768px) {
-      margin: 8rem 0 0 0;
-      font-size: 2.4rem;
+      margin: 8vh 0 0 0;
+
+      button {
+        font-size: 3.2rem;
+      }
     }
   }
 `;
