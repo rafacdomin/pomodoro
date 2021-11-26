@@ -94,6 +94,11 @@ const Main = styled.main`
 
       button {
         font-size: 3.2rem;
+        transition: all 0.2s;
+
+        &:hover {
+          font-size: 3.5rem;
+        }
       }
     }
   }

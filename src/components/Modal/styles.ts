@@ -304,9 +304,14 @@ const Fonts = styled.div`
     input[type='radio'] {
       width: 60px;
       height: 60px;
+      transition: filter 0.2s;
 
       &::after {
         font-size: 2rem;
+      }
+
+      &:hover {
+        filter: brightness(0.9);
       }
     }
   }
@@ -353,6 +358,11 @@ const Colors = styled.div`
     input[type='radio'] {
       width: 60px;
       height: 60px;
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.9);
+      }
     }
   }
 `;
