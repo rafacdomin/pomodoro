@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import useSound from 'use-sound';
 import { useConfig } from '../../hooks/config';
 
 import { Counter } from './styles';
@@ -13,6 +14,10 @@ export const Timer: React.FC<ITimerProps> = ({ type }) => {
   const localConfig = useConfig();
   const [timer, setTimer] = useState<NodeJS.Timeout | number>();
   const [counter, setCounter] = useState(localConfig.pomodoro * 60);
+
+  const [alert] = useSound('/sounds/alert.mp3');
+  const [startClick] = useSound('/sounds/start-click.mp3');
+  const [stopClick] = useSound('/sounds/stop-click.mp3');
 
   const config = useMemo(() => {
     return {
@@ -47,10 +52,11 @@ export const Timer: React.FC<ITimerProps> = ({ type }) => {
 
   useEffect(() => {
     if (counter <= 0) {
+      alert();
       pauseTimer();
       resetTimer();
     }
-  }, [counter, pauseTimer, resetTimer]);
+  }, [counter, pauseTimer, resetTimer, alert]);
 
   const convertSeconds = useMemo(() => {
     const minutes = parseInt(String(counter / 60));
@@ -77,7 +83,8 @@ export const Timer: React.FC<ITimerProps> = ({ type }) => {
     <Counter
       font={localConfig.font}
       color={localConfig.color}
-      onClick={!timer ? startTimer : pauseTimer}
+      onClick={ !timer ? startTimer : pauseTimer }
+      onMouseDown={() => timer ? stopClick() : startClick() }
     >
       <div>
         <CircularProgressbarWithChildren value={percentage} strokeWidth={2}>
