@@ -26,6 +26,8 @@
      <a href="https://rf-pomodoro.netlify.app/" target="_blank"><img src="https://api.netlify.com/api/v1/badges/d1c1ed5d-235a-462a-a476-674b26a233f6/deploy-status" alt="Run in Netlify"></a>
 </p>
 
+<img src="https://github.com/rafacdomin/pomodoro/blob/main/.github/preview.png?raw=true">
+
 ## Technologies
 
 This project was developed with the following technologies:
